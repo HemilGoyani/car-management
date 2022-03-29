@@ -8,7 +8,7 @@ urlpatterns = [
     path('car_seller', views.seller, name= 'car-seller'),
     path('update/<int:car_id>', views.update_car),
     path('delete/<int:car_id>', views.delete_car),
-    
+    path('success/', views.successform, name='success')
 ]
 
 if DEBUG:

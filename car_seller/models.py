@@ -18,12 +18,14 @@ class CarSeller(models.Model):
         year_dropdown.append((y, y))
     seller_name = models.CharField(max_length=20)
     seller_mobile = models.CharField(max_length = 10, validators = [MinLengthValidator(10), MaxLengthValidator(10)])
+    email = models.EmailField(null=True )
     make = models.CharField(max_length=50)
     model = models.CharField(max_length=50)
-    year = models.IntegerField(('year'), max_length=4, choices=year_dropdown, default=datetime.now().year)
+    year = models.IntegerField(('year'),choices=year_dropdown, default=datetime.now().year)
     Condition = models.CharField(max_length=10, choices= CHOICES)
     asking_pricce = models.FloatField(max_length=7)
     picture = models.ImageField(upload_to="media/",null=False)
+    is_sell = models.BooleanField(default=False)
     
     def __str__(self):
         return self.seller_name

@@ -11,9 +11,10 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         <h1>Car Buy Page</h1>
     </center>
 </nav>  
-<input class="form-control mr-sm-2" type="search"   placeholder="Search car in year and Make vise..." aria-label="Search" name="search">
-<br>
-<a class="navbar-link btn-lg" href="{% url 'car-search' %}" style="background-color:#FFCC33;color:#000000;">Search</a>
+<form method = 'POST'>
+    <input class="form-control mr-sm-2" type="search"   placeholder="Search car in year and Make vise..." aria-label="Search" name="search">
+    <a class="navbar-link btn-lg" href="{% url 'car-search' %}" style="background-color:#FFCC33;color:#000000;">Search</a>
+</form>
 <br>
     
 <br>

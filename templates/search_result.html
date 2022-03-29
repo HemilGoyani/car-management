@@ -8,7 +8,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 </head>
 <body style="background-color:#4DB6AC;">
 <nav class="navbar navbar-light" style="background-color:#FF0033;">
-    
+    <a href="{% url 'home' %}">home</a>
 </nav>
 {% block content %}
 <p><b>List of filtered cars</b></p>
@@ -24,15 +24,16 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <p class="card-title">Prices:{{car.asking_pricce}}</p>
     <div class="card-footer bg-transparent border-dark">
     <center>
-        <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>Buy the car</a>
+        <a href="{% url 'car-buyer-form'%}" class="btn btn-danger" id = '{{car.id}}'>Buy the car</a>
     </center>
    
     </div>
   </div>
 </div>
-
+ 
     {% endfor %}
 </div>
+
 {% endblock %}
 
         

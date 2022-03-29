@@ -4,7 +4,6 @@ Wellcome {{user.username}}! &nbsp; <a href="{% url 'index' %}">Logout</a>
  
 {% endif %}
 
-<!DOCTYPE html>
 {% load static %}
 <html>
 <head>
@@ -19,34 +18,48 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     <a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Dealer login</a>
     <a href="{% url 'car-seller'%}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Car Seller</a>
 </nav>
-{% block content %}
+<br>
 <p><b>List of car for sells</b></p>
 <div class="card-columns">
-    {% for car in shelf %}
-    <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <img class="card-img-top" src="{{ car.picture.url }}" height="200px" width='200px'>
-    <h5 class="card-title">Model:{{ car.model }}</h5>
-    <p class="card-text">Make:{{ car.make }}</p>
-    <p class="card-text">Condition:{{ car.Condition }}</p>
-    <p class="card-title">Year:{{car.year}}</p>
-   <div class="card-footer bg-transparent border-dark">
-    <center>
-        <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>
-        <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a>
-    </center>
-   
-    </div>
-  </div>
-</div>
-
-    {% endfor %}
-</div>
-{% endblock %}
-
+        {% for car in users %}
         
-       
-        
-</body>
-</html>
-
+           
+            <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <img class="card-img-top" src="{{ car.picture.url }}" height="200px" width='200px'>
+            <h5 class="card-title">Model:{{ car.model }}</h5>
+            <p class="card-text">Make:{{ car.make }}</p>
+            <p class="card-text">Condition:{{ car.Condition }}</p>
+            <p class="card-title">Year:{{car.year}}</p>
+           <div class="card-footer bg-transparent border-dark">
+            <center>
+                <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>
+                <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a>
+            </center>
+            
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+  
+  {% if users.has_other_pages %}
+    <ul class="pagination">
+      {% if users.has_previous %}
+        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+      {% endif %}
+      {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+          <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+          <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if users.has_next %}
+        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+      {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+      {% endif %}
+    </ul>
+  {% endif %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:#4DB6AC;">
+<nav class="navbar navbar-light" style="background-color:#FF0033;">
+    <center>
+        <h1>Car Buy Page</h1>
+    </center>
+</nav>  
+<input class="form-control mr-sm-2" type="search"   placeholder="Search car in year and Make vise..." aria-label="Search" name="search">
+<br>
+<a class="navbar-link btn-lg" href="{% url 'car-search' %}" style="background-color:#FFCC33;color:#000000;">Search</a>
+<br>
+    
+<br>
+<br>
+{% block content %}
+
+{% endblock %}
+</body>
+</html>

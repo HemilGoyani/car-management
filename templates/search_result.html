@@ -1,9 +1,3 @@
-{% if user.is_authenticated %}
- 
-Wellcome {{user.username}}! &nbsp; <a href="{% url 'index' %}">Logout</a> 
- 
-{% endif %}
-
 <!DOCTYPE html>
 {% load static %}
 <html>
@@ -15,25 +9,22 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <body style="background-color:#4DB6AC;">
 <nav class="navbar navbar-light" style="background-color:#FF0033;">
     
-    <a class="navbar-link btn-lg" href="{% url 'car-buyer' %}" style="background-color:#FFCC33;color:#000000;">Car Buyer</a>
-    <a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Dealer login</a>
-    <a href="{% url 'car-seller'%}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Car Seller</a>
 </nav>
 {% block content %}
-<p><b>List of car for sells</b></p>
+<p><b>List of filtered cars</b></p>
 <div class="card-columns">
     {% for car in shelf %}
     <div class="card" style="width: 18rem;">
-  <div class="card-body">
+    <div class="card-body">
     <img class="card-img-top" src="{{ car.picture.url }}" height="200px" width='200px'>
     <h5 class="card-title">Model:{{ car.model }}</h5>
     <p class="card-text">Make:{{ car.make }}</p>
     <p class="card-text">Condition:{{ car.Condition }}</p>
     <p class="card-title">Year:{{car.year}}</p>
-   <div class="card-footer bg-transparent border-dark">
+    <p class="card-title">Prices:{{car.asking_pricce}}</p>
+    <div class="card-footer bg-transparent border-dark">
     <center>
-        <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>
-        <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a>
+        <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>Buy the car</a>
     </center>
    
     </div>

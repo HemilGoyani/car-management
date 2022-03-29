@@ -12,15 +12,18 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
     </center>
 </nav>
 <br>
-{% block content %}
-    <center>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Log In</button>
-        </form>
-        <p>You are not registerd?, click --> <a href="{% url 'registration' %}">Registartion</a></p>
-    </center>
-{% endblock %}
+<center>
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+ 
+        <input type="submit" value="Login">
+    </form>
+    <p>You are not registerd?, click --> <a href="{% url 'register' %}">Registartion</a></p>
+
+ 
+<p><a href="{% url 'password_reset' %}">Reset Password</a> </p>
+</center> 
 </body>
 </html>
+

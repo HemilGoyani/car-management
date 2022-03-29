@@ -1,14 +1,45 @@
-{% block body %}
- 
 {% if user.is_authenticated %}
  
-Welcome {{user.username}}
-<p><a href="{% url 'index' %}">Logout</a> </p>
- 
-{% else %}
- 
-<p><a href="{% url 'login' %}" >Login</a></p>
+Wellcome {{user.username}}! &nbsp; <a href="{% url 'index' %}">Logout</a> 
  
 {% endif %}
- 
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Car App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body style="background-color:#4DB6AC;">
+<nav class="navbar navbar-light" style="background-color:#FF0033;">
+    
+    <a class="navbar-link btn-lg" href="{% url 'index' %}" style="background-color:#FFCC33;color:#000000;">Car Buyer</a>
+<a href="{% url 'admin:index' %}" class = 'navbar-link btn-lg' style="background-color:#FFCC33;color:#000000;">Dealer login</a>
+    <a href="{% url 'car-seller'%}" class="navbar-link btn-lg" style="background-color:#FFCC33;color:#000000;">Car Seller</a>
+</nav>
+{% block content %}
+<div class="card-columns">
+    {% for car in shelf %}
+    <div class="card-body">
+        <img class="card-img-top" src="{{ car.picture.url }}">
+        <h5 class="card-title">Model:{{ car.model }}</h5>
+        <p class="card-text">Make:{{ car.make }}</p>
+        <p class="card-text">Condition:{{ car.Condition }}</p>
+        <p class="card-title">Year:{{car.year}}</p>
+       <div class="card-footer bg-transparent border-dark">
+        <center>
+            <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>
+            <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a>
+        </center>
+       
+        </div>
+      </div>
+    </div>
+{% endfor %}
+</div>
 {% endblock %}
+</body>
+</html>
+

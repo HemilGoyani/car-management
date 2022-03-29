@@ -4,11 +4,10 @@ from online_car_sell_buy.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_U
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.index, name = 'index'),
+    path('', views.home),
     path('car_seller', views.seller, name= 'car-seller'),
     path('update/<int:car_id>', views.update_car),
     path('delete/<int:car_id>', views.delete_car),
-    path("accounts/", include("django.contrib.auth.urls"), name='login')
     
 ]
 

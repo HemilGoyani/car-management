@@ -19,7 +19,6 @@ def serachbox(request):
         return HttpResponse('car not avalibale')  
 
 def car_buyer(request):  
-    print(request.method,"=-=-=-=-=-")
     buyer = CarBuyerForm()
     if request.method == 'POST':
         buyer = CarBuyerForm(request.POST, request.FILES)

@@ -8,7 +8,7 @@ from django.views.generic.base import TemplateView
 urlpatterns = [
     path('', index, name='index'),
     path("register/", register_request, name="register"),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls'),name='login'),
     path('home/', home, name='home'),
     path('car-seller/', include('car_seller.urls')),
     path('car-buyer/', include('car_buyer.urls')),

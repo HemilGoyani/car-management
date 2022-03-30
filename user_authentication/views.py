@@ -27,6 +27,7 @@ def login_user(request):
     form = LoginForm()
     return render(request, "login.html", {'form':form})
 
+
 def register_request(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
@@ -34,7 +35,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("main:homepage")
+            return redirect("login")
         messages.error(
             request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()

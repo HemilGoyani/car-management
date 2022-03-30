@@ -4,7 +4,7 @@ from online_car_sell_buy.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_U
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home),
+    path('', views.home, name='home'),
     path('car_seller', views.seller, name= 'car-seller'),
     path('update/<int:car_id>', views.update_car),
     path('delete/<int:car_id>', views.delete_car),

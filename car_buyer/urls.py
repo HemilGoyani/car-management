@@ -4,9 +4,9 @@ from online_car_sell_buy.settings import DEBUG, STATIC_URL, STATIC_ROOT, MEDIA_U
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.home, name="car-buyer"),
-    path('car-search/', views.serachbox, name= 'car-search'),
-    path('car_purchage/', views.car_buyer, name='car-buyer-form') 
+    path('', views.home, name="car-search"),
+    path('car_search_result/', views.serachbox, name= 'car-search-result'),
+    path('car-buyer-form/', views.car_buyer, name='car-buyer-form') 
 ]
 
 if DEBUG:

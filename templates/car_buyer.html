@@ -1,3 +1,5 @@
+
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +13,14 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         <h1>Car Buy Page</h1>
     </center>
 </nav>  
-<form method = 'POST'>
-    <input class="form-control mr-sm-2" type="search"   placeholder="Search car in year and Make vise..." aria-label="Search" name="search">
-    <a class="navbar-link btn-lg" href="{% url 'car-search' %}" style="background-color:#FFCC33;color:#000000;">Search</a>
-</form>
-<br>
-    
-<br>
-<br>
-{% block content %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<form method="GET" action="{% url 'car-search' %}">
+  <input type="number" placeholder="Search year vise.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<br>
 {% endblock %}
 </body>
 </html>

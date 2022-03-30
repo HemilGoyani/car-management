@@ -7,7 +7,8 @@ def home(request):
     return render(request, 'car_buyer.html')
 
 def serachbox(request):
-    shelf = CarSeller.objects.filter(year=2022)
+    year = request.GET.get('search')
+    shelf = CarSeller.objects.filter(year=year)
     return render(request, 'search_result.html', {'shelf': shelf})  
 
 def car_buyer(request):

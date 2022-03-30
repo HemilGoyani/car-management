@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'car_seller',
     'user_authentication',
     'car_buyer',
+    'djmoney',
 ]
 
 MIDDLEWARE = [

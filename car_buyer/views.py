@@ -12,11 +12,14 @@ def home(request):
 
 def serachbox(request):
     year = request.GET.get('search')
-    shelf = CarSeller.objects.filter(year=year)
-    return render(request, 'search_result.html', {'shelf': shelf})  
-
+    if year:
+        shelf = CarSeller.objects.filter(year=year)
+        return render(request, 'search_result.html', {'shelf': shelf})  
+    else:
+        return HttpResponse('car not avalibale')  
 
 def car_buyer(request):  
+    print(request.method,"=-=-=-=-=-")
     buyer = CarBuyerForm()
     if request.method == 'POST':
         buyer = CarBuyerForm(request.POST, request.FILES)
@@ -24,7 +27,7 @@ def car_buyer(request):
             buyer.save()
             return redirect('home')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'home'}}">reload</a>""")
+            return HttpResponse("""your form is wrong, reload on <a href = "{{url:'home'}}">reload</a>""")
     else:
         return render(request, 'car_buyer_form.html', {'upload_form': buyer})
 

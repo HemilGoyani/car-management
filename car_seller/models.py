@@ -1,6 +1,11 @@
 from django.db import models
 from django.core.validators import *
 from datetime import datetime
+from djmoney.models.fields import MoneyField
+from djmoney.money import Money
+from djmoney.models.validators import MaxMoneyValidator, MinMoneyValidator
+from djmoney.models.managers import money_manager
+
 
 class CarSeller(models.Model):
     POOR = 'Poor'
@@ -23,7 +28,9 @@ class CarSeller(models.Model):
     model = models.CharField(max_length=50)
     year = models.IntegerField(('year'),choices=year_dropdown, default=datetime.now().year)
     Condition = models.CharField(max_length=10, choices= CHOICES)
-    asking_price = models.FloatField()
+    asking_price= MoneyField(max_digits=6,
+        decimal_places=2,validators=[MinMoneyValidator(1000),
+        MaxMoneyValidator(100000),] ,default_currency='USD')
     picture = models.ImageField(upload_to="media/",null=False)
     is_sell = models.BooleanField(default=False)
     

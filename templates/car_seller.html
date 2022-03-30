@@ -2,7 +2,7 @@
 {% block content %}
     <center>
     <h1 class="display-3" style="background-color:#000000;color:#FFFF99;">Car Seller Form</h1>
-    <form method = 'POST' action="{% url 'success' %}" isvalid>
+    <form method = 'POST' action="{% url 'success' %}" enctype="multipart/form-data">
         {% csrf_token %}
         <table class = 'w-50 table table-light' style="border-radius:10px;background-color:#FFFF99;">
             {% for field in upload_form %}
@@ -13,7 +13,6 @@
             {% endfor %}
         </table>
         <button type="submit" class="btn btn-lg btn-warning" >Submit</button> &nbsp; <a href="{% url 'home' %}">home</a>
-        {% comment %} &nbsp; <a href="{% url 'success' %}">Submit</a> {% endcomment %}
     </form>
 </center>
 {% endblock %}

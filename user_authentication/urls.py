@@ -10,8 +10,8 @@ urlpatterns = [
     path("register/", register_request, name="register"),
     path('accounts/', include('django.contrib.auth.urls')),
     path('home/', home, name='home'),
-    path('car_seller', include('car_seller.urls')),
-    path('car_buyer', include('car_buyer.urls')),
+    path('car_seller/', include('car_seller.urls')),
+    path('car_buyer/', include('car_buyer.urls')),
 ]
 
 if DEBUG:

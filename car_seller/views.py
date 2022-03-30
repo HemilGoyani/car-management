@@ -8,8 +8,6 @@ from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def home(request):
-    # shelf = CarSeller.objects.filter        (is_sell = False)
-    # return render(request, 'home.html', {'shelf': shelf})
     user_list = CarSeller.objects.all()
     page = request.GET.get('page', 1)
 

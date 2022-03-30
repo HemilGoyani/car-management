@@ -23,7 +23,7 @@ class CarSeller(models.Model):
     model = models.CharField(max_length=50)
     year = models.IntegerField(('year'),choices=year_dropdown, default=datetime.now().year)
     Condition = models.CharField(max_length=10, choices= CHOICES)
-    asking_pricce = models.FloatField(max_length=7)
+    asking_price = models.FloatField()
     picture = models.ImageField(upload_to="media/",null=False)
     is_sell = models.BooleanField(default=False)
     

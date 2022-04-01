@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', views.home, name="car-search"),
     path('car-search-result/', views.serachbox, name= 'car-search-result'),
-    path('car-buyer-form/', views.car_buyer, name='car-buyer-form') 
+    path('car-search-result/car-buyer-form/<int:id>', views.car_buyer, name='car-buyer-form') 
 ]
 
 if DEBUG:

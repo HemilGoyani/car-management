@@ -18,8 +18,15 @@ def serachbox(request):
     else:
         return HttpResponse('car not avalibale')  
 
+
 def car_buyer(request, id):  
-    seller = CarBuyerForm()
+    car_id = int(id)
+    car_data = CarSeller.objects.get(id = car_id)
+    return render(request, 'car_buyer_form.html', {'data':car_data})
+
+
+def car_buyer_save(request):
+    buyer = CarBuyerForm()
     if request.method == 'POST':
         seller = CarBuyerForm(request.POST, request.FILES)
         if seller.is_valid():
@@ -28,8 +35,4 @@ def car_buyer(request, id):
             return redirect('home')
         else:
             return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'home'}}">reload</a>""")
-    else:
-        return render(request, 'car_buyer_form.html', {'upload_form': seller})
-    
 
-    

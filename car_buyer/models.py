@@ -13,4 +13,4 @@ class CarBuyer(models.Model):
     year = models.IntegerField(default=2022)
     Condition = models.CharField(max_length=10, default='Good')
     asking_pricce = models.FloatField(default=15000)    
-    user_id = models.ForeignKey(User,on_delete=models.CASCADE,editable=False,null=True,blank=True)
+    # user_id = models.ForeignKey(User,on_delete=models.CASCADE,editable=False,null=True,blank=True)

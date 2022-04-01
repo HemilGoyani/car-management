@@ -27,7 +27,7 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
         {% if car.is_sell%}
             <p class="btn btn-danger">Sold</p> 
         {% else %}
-            <a href="{% url 'car-buyer-form'  %}" class="btn btn-warning">Buy the car</a>
+        <a href="car-buyer-form/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>Buy the car</a>
         {% endif %}
     </center>
    

@@ -25,14 +25,16 @@ def car_buyer(request, id):
     return render(request, 'car_buyer_form.html', {'data':car_data})
 
 
-def car_buyer_save(request):
-    buyer = CarBuyerForm()
+def car_buyer_save(request, id):
+    car_id = int(id)
+    print(request.method,"=-=-=-=-=-")
+    # return HttpResponse("hello every one")
     if request.method == 'POST':
-        seller = CarBuyerForm(request.POST, request.FILES)
-        if seller.is_valid():
-            print()
-            seller.save()
+        buyer = CarBuyerForm(request.POST, request.FILES)
+        print(buyer)
+        if buyer.is_valid():
+            buyer.save()
             return redirect('home')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'home'}}">reload</a>""")
+            return HttpResponse('Form is not valid, please validate the form')
 

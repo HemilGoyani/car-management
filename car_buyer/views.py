@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from car_seller.models import *
 from .forms import *
 from car_seller.forms import CarSellersForm
-
+from django.db.models import Q
 
 
 def home(request):
@@ -13,21 +13,23 @@ def home(request):
 def serachbox(request):
     year = request.GET.get('search')
     if year:
-        shelf = CarSeller.objects.filter(year=year)
+        shelf = CarSeller.objects.filter(Q(year__icontains=year) | Q(make__icontains=year))
         return render(request, 'search_result.html', {'shelf': shelf})  
     else:
         return HttpResponse('car not avalibale')  
 
-def car_buyer(request):  
-    buyer = CarBuyerForm()
+def car_buyer(request, id):  
+    seller = CarBuyerForm()
     if request.method == 'POST':
-        buyer = CarBuyerForm(request.POST, request.FILES)
-        if buyer.is_valid():
-            buyer.save()
+        seller = CarBuyerForm(request.POST, request.FILES)
+        if seller.is_valid():
+            print()
+            seller.save()
             return redirect('home')
         else:
-            return HttpResponse("""your form is wrong, reload on <a href = "{{url:'home'}}">reload</a>""")
+            return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'home'}}">reload</a>""")
     else:
-        return render(request, 'car_buyer_form.html', {'upload_form': buyer})
+        return render(request, 'car_buyer_form.html', {'upload_form': seller})
+    
 
     

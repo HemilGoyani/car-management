@@ -22,10 +22,9 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
 <p><b>List of car for sells</b></p>
 <div class="card-columns">
         {% for car in users %}
-        
-           
+                   
             <div class="card" style="width: 18rem;">
-          <div class="card-body">
+            <div class="card-body">
             <img class="card-img-top" src="{{ car.picture.url }}" height="200px" width='200px'>
             <h5 class="card-title">Model:{{ car.model }}</h5>
             <p class="card-text">Make:{{ car.make }}</p>
@@ -33,13 +32,20 @@ integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw
             <p class="card-title">Year:{{car.year}}</p>
            <div class="card-footer bg-transparent border-dark">
             <center>
-                <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>
-                <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a>
+              {% if car.is_sell%}
+                <p class="btn btn-danger">Sold</p> 
+              {% else %}
+                <p class="btn btn-warning">Sell the car</p>
+              {% endif %}
+                {% comment %} <p class="btn btn-danger">Sold</p>  {% endcomment %}
+                {% comment %} <a href="update/{{car.id}}" class="btn btn-warning" id = '{{car.id}}'>edit</a>  {% endcomment %}
+                {% comment %} <a href="delete/{{car.id}}" class="btn btn-danger" id = '{{car.id}}'>delete</a> {% endcomment %}
             </center>
             
             </div>
           </div>
         </div>
+        
         {% endfor %}
   
   {% if users.has_other_pages %}

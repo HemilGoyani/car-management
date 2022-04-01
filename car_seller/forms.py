@@ -7,5 +7,5 @@ from .models import *
 class CarSellersForm(forms.ModelForm):
     class Meta:
         model = CarSeller
-        fields = ['seller_name', 'seller_mobile', 'email', 'make', 'model','year', 'Condition', 'asking_price', 'picture']
-        # fields = '__all__'
+        # fields = ['seller_name', 'seller_mobile', 'email', 'make', 'model','year', 'Condition', 'asking_price', 'picture']
+        exclude = ('is_sell',)

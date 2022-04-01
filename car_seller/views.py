@@ -26,7 +26,7 @@ def seller(request):
         if seller.is_valid():
             print()
             seller.save()
-            return redirect('home')
+            return redirect('success')
         else:
             return HttpResponse("""your form is wrong, reload on <a href = "{{ url : 'home'}}">reload</a>""")
     else:
